@@ -3,17 +3,18 @@
 #include <algorithm>
 using namespace std;
 
-int findDuplicate(vector<int>& nums) {
+vector<int> findDuplicate(vector<int>& nums) {
+    vector<int> duplicate;
     sort(nums.begin(), nums.end());
     for(int i=0; i<nums.size(); i++){
         for(int j=i+1; j< nums.size();j++){
             if(nums[i] == nums[j]){
-                return nums[i];
-
+                duplicate.push_back(nums[i]);
+                
             }
         }
     }
-    return -1;
+    return duplicate;
 }
 int main(){
     vector<int> arr;
@@ -32,10 +33,13 @@ int main(){
     }
     cout << endl;
 
-    int num = findDuplicate(arr);
-    cout << "Duplicate: " << num << endl;
+    vector<int> nums = findDuplicate(arr);
+    cout << "Duplicate: ";
 
-
-
+    for(int num : nums){
+        cout << num << " ";
+        
+    }
+    
     return 0;
 }
