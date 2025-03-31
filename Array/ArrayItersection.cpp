@@ -10,11 +10,11 @@ void ArrayIntersection(vector<int>& num1 , vector<int>& num2){
         for(int j = 0; j < num2.size(); j++){
             if(element == num2[j]){
                 arrayInteraction.push_back(element);
+                num2[j] = -1;
+                break;
 
             }
-            else if(element != num2[j]){
-                break;
-            }
+           
             
         }
 
