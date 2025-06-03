@@ -1,8 +1,8 @@
+char ch[6]="abcde";
+//    char *c = &ch[0];
 
-  //  for(int i = 1; i <= 4; i++){
-  //   for(int j = 1; j <=i; j++){
-  //     char x = 'A' + i-1;
-  //     cout << x << " ";
-  //   }
-  //   cout << endl;
-  // }
+//    cout<<"value "<<" "<<ch<<endl;
+//    cout<<"value "<<" "<<ch[0]<<endl;
+//    cout<<"value "<<" "<<&ch<<endl;
+//    cout<<"value "<<" "<<c<<endl;
+//    cout<<"value "<<" "<<*c<<endl;
