@@ -24,17 +24,17 @@ void pairSum(vector<int> arr, int s) {
 }
 
 int main() {
-    vector<int> arr;
     int size, s;
-
     cout << "Enter the number of elements in the array: ";
     cin >> size;
+    vector<int> arr(size);
 
     cout << "Enter the elements: ";
     for (int i = 0; i < size; i++) {
-        int temp;
-        cin >> temp;
-        arr.push_back(temp);
+        // int temp;
+        // cin >> temp;
+        // arr.push_back(temp);
+        cin>>arr[i];
     }
 
     cout << "Enter the target sum: ";
