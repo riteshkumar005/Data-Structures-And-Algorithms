@@ -49,10 +49,10 @@ void insertAtPosition(Node* &head, Node* &tail, int position, int data) {
     temp->next = nodeToInsert;
 }
 
-void deleteNode(Node* &head, Node* &tail, int position) {
+void deleteNode(Node* &head, Node* &tail, int value) {
     if (head == NULL) return;
 
-    if (position == 1) {
+    if (value == head->data) {
         Node* temp = head;
         head = head->next;
         temp->next = NULL;
@@ -60,13 +60,12 @@ void deleteNode(Node* &head, Node* &tail, int position) {
     } else {
         Node* curr = head;
         Node* prev = NULL;
-        int cnt = 1;
-
-        while (cnt < position && curr != NULL) {
+            
+    while (curr != NULL && curr->data != value) {
             prev = curr;
             curr = curr->next;
-            cnt++;
         }
+
 
         if (curr == NULL) {
             cout << "Position out of bounds, no deletion performed.\n";
@@ -74,7 +73,10 @@ void deleteNode(Node* &head, Node* &tail, int position) {
         }
 
         prev->next = curr->next;
-        tail=prev;
+        if(curr == tail){
+            tail=prev;
+        }
+        
         curr->next = NULL;
         delete curr;
     }
@@ -106,7 +108,7 @@ int main() {
     print(tail);
 
     // deleteNode(head,tail 1);  // Deletes 10
-    deleteNode(head, tail ,6);  // Deletes 60
+    deleteNode(head, tail ,10);  // Deletes 60
     
     cout << "List after deletions:\n";
     print(head);
