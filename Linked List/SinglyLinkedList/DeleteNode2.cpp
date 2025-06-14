@@ -6,10 +6,22 @@ class Node {
 public:
     int data;
     Node* next;
-
+    
+    //Constructor
     Node(int data) {
         this->data = data;
         this->next = NULL;
+    }
+
+    //Destructor
+    ~Node(){
+        int value = this->data;
+        //memory free
+        if(this->next != NULL){
+            delete next;
+            this->next=NULL;
+        }
+        cout<<"Memory free for node with data"<<" "<<value<<endl;
     }
 };
 

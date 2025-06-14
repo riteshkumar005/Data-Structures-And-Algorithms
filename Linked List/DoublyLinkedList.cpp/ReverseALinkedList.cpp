@@ -3,31 +3,28 @@
 using namespace std;
 
 class Node{
+
     public:
     int data;
     Node* prev;
     Node* next;
 
-    //Constructor
     Node(int data){
         this->data = data;
         this->prev = NULL;
         this->next = NULL;
+
     }
 
-    //Destructor
-
-     ~Node(){
+    ~Node(){
         int value = this->data;
-        //memory free
+
         if(this->next != NULL){
             delete next;
-            this->next=NULL;
+            this->next = NULL;
         }
-        cout<<"Memory free for node with data"<<" "<<value<<endl;
+        cout<<"memory free for the value"<<" "<<value;
     }
-    
-
 };
 
 void insertAtHead(Node* &head,Node* &tail, int data){
@@ -91,34 +88,28 @@ void insertAtPosition(Node* &head, Node* &tail, int position, int data){
 
 }
 
-void deleteNode(Node* &head, Node* &tail, int position){
-    if(position == 1){
-        Node* temp = head;
-        temp->next->prev = NULL ;
-        head = temp->next;
-        temp->next = NULL;
-        delete temp;
-    }
-    else{
-        Node* prev = NULL;
-        Node* curr = head;
-        int cnt=1;
+Node* reverseLinkedList(Node* &head) {
+    Node* current = head;
+    Node* temp = NULL;
 
-        while(cnt < position){
-            prev = curr;
-            curr = curr->next;
-            cnt++;
-        }
+    while (current != NULL) {
+        // Swap the next and prev pointers
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
 
-        curr->prev = NULL;
-        prev->next = curr->next;
-        curr->next = NULL;
-        if(curr = tail){
-            tail = prev;
-        }
-        delete curr;
+        // Move to the next node (which is current->prev after swapping)
+        current = current->prev;
     }
+
+    // Fix the head of the reversed list
+    if (temp != NULL) {
+        head = temp->prev;
+    }
+
+    return head;
 }
+
 
 void print(Node* &head){
     Node* temp = head;
@@ -128,7 +119,7 @@ void print(Node* &head){
         temp = temp->next;
     }
 
-    cout<<endl;
+    cout<<endl<<endl;
 }
 int main(){
     Node* node1 = new Node(10);
@@ -143,13 +134,12 @@ int main(){
 
    cout<<"After insert at position"<<endl;
    insertAtPosition(head, tail, 2, 11);
+
    print(head);
    print(tail);
 
-   cout<<"After delete the node"<<endl;
-   deleteNode(head, tail, 5);
-   print(head);
-   print(tail);
+   Node* rev = reverseLinkedList(head);
+   print(rev);
 
     return 0;
 }
