@@ -43,7 +43,7 @@ Node* insertBST(Node* root, int d)
 
 
 
-
+// 1nd way to implement predecessor and successor
 void solve(Node* root, vector<int> &arr)
 {
 
@@ -77,6 +77,61 @@ pair<int, int> predAndsucc(Node* root, int key)
     }
 
     return {ans[i-1], ans[i+1]};
+}
+
+
+
+// 2nd way to implement predecessor and successor
+
+pair<int, int> predecessorSuccessor(Node* root, int key)
+{
+
+    // find key
+    Node* temp = root;
+
+    int pred = -1;
+    int succ = -1;
+
+    while(temp != NULL && temp->data != key)
+    {
+        if(temp->data > key)
+        {
+            succ = temp->data; // possible successor
+            temp = temp->left;
+        }else{
+            pred = temp->data;  // possible predecessor
+            temp = temp->right;
+        }
+    }
+
+     // If key not found, just return current pred and succ
+        if(temp == NULL) {
+            return {pred, succ};
+        }
+
+    // pred and succ
+
+    //pred
+    Node* leftTree = temp->left;
+
+    while(leftTree != NULL)
+    {
+        pred = leftTree->data;
+        leftTree = leftTree->right;
+    }
+
+    // succ
+    Node* rightTree = temp->right;
+
+    while(rightTree != NULL)
+    {
+        succ = rightTree->data;
+        rightTree = rightTree->left;
+    }
+
+    pair<int, int> ans = make_pair(pred, succ);
+
+    return ans;
 }
 
 void levelOrderTraversal(Node* root)
@@ -140,11 +195,17 @@ int main()
     int key;
     cin>> key;
 
-    cout<<"predecessor And successor in BST :"<<endl;
+    cout<<"predecessor And successor in BST (TC -> O(N) And SC -> O(N)) :"<<endl;
     pair<int, int> p = predAndsucc(root, key);
 
     cout<<"predecessor : "<<p.first<<endl;
     cout<<"successsor : "<<p.second;
 
+    cout<<endl;
+
+    cout<<"predecessor And successor in BST (TC -> O(N) And SC -> O(1)) :"<<endl;
+    pair<int, int> ans = predecessorSuccessor(root, key);
+    cout<<"predecessor : "<<ans.first<<endl;
+    cout<<"successor : "<<ans.second<<endl;
     return 0;
 }
