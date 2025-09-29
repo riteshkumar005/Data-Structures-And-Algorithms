@@ -69,6 +69,7 @@ int main(){
     Node* tail = node1;
     insertAtPosition(tail,head,2,20);
     insertAtPosition(tail,head,2,5);
+    insertAtPosition(tail,head,2,15);
    
     print(head);
 

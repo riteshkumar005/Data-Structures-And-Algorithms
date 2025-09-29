@@ -35,6 +35,7 @@ int main(){
     Node* head = node1;
     insertAtHead(head, 12);
     insertAtHead(head, 15);
+    insertAtHead(head, 20);
     print(head);
 
     return 0;

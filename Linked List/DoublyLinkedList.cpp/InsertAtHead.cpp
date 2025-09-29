@@ -50,7 +50,9 @@ int main(){
     insertAtHead(head, tail, 7);
     insertAtHead(head, tail, 5);
     insertAtHead(head, tail, 3);
+    insertAtHead(head, tail, 1);
 
     print(head);
+    print(tail);
     return 0;
 }

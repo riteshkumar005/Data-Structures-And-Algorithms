@@ -52,8 +52,9 @@ int main(){
     
    insertAtTail(head, tail, 13);
    insertAtTail(head, tail, 19);
-   
+   insertAtTail(head, tail, 25);
+   print(head);
+   print(tail);
 
-    print(head);
     return 0;
 }
